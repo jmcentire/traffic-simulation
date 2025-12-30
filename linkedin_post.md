@@ -15,7 +15,9 @@ Sound too good to be true? Here's the math.
 
 ## The Problem Isn't Speed. It's Speed *Variance*.
 
-Traffic engineers model highways like liquid flowing through pipes. But traffic has gas-like properties too—it expands to fill available space, and adding lanes doesn't increase capacity linearly.
+Air traffic control doesn't let Cessnas and 747s share runways at arbitrary speeds. We pretend highways can.
+
+Traffic engineers model highways like liquid flowing through pipes. But traffic has gas-like properties—it expands to fill available space, and adding lanes doesn't increase capacity linearly.
 
 The real killer isn't fast cars. It's the **speed differential** between cars in the same lane.
 
@@ -37,22 +39,75 @@ Simple rule change:
 
 | Lane | Speed Range | Enforcement |
 |------|-------------|-------------|
-| Right | 55-65 mph | Harsh minimum at 55 |
-| Middle | 65-75 mph | Harsh minimum at 65 |
-| Left | 75-85 mph | Harsh minimum at 75 |
-| Express | 85-95 mph | Harsh minimum at 85 |
+| Right | 55-65 mph | Strict minimum at 55 |
+| Middle | 65-75 mph | Strict minimum at 65 |
+| Left | 75-85 mph | Strict minimum at 75 |
 
 The key insight: **ticket people for going too slow more aggressively than for going too fast.**
+
+*(An express lane for certified vehicles/drivers at 85-95 mph is mathematically justified but politically harder. The proposal works without it.)*
 
 Why does this work?
 
 1. **Self-selection**: Drivers sort themselves by desired speed. No more 62 mph campers in the fast lane.
 
-2. **Natural discipline**: You can't enter the 75-85 lane going 68—you'd be below minimum. You MUST accelerate first, then merge. "Accelerate then merge left" and "merge right then decelerate" become structurally enforced.
+2. **Structural enforcement**: You can't enter the 75-85 lane going 68—you'd be below minimum. You MUST accelerate first, then merge. "Accelerate then merge left" and "merge right then decelerate" become mandatory, not advisory.
 
 3. **Reduced variance**: Within each lane, everyone goes approximately the same speed. No more accordion effect.
 
 4. **Fewer lane changes**: Simulation showed a **94% reduction**—from 7.5 per car to 0.46.
+
+---
+
+## The Simulation
+
+I built an agent-based traffic model to test this. Parameters:
+- 3 lanes, 10-mile stretch
+- 2,400 cars/hour entry rate
+- Realistic driver behavior: 30% need mid-road exits, **5% imperfect compliance in both scenarios**
+
+The system doesn't require universal compliance. It only requires that most drivers prefer predictability to conflict.
+
+**Results:**
+
+| Metric | Current System | Proposed | Change |
+|--------|---------------|----------|--------|
+| Throughput | 1,175 cars/hr | 1,574 cars/hr | **+34%** |
+| Lane changes/car | 7.49 | 0.46 | **-94%** |
+| Accident risk | 9.06/1000 | 1.11/1000 | **-84%** |
+| Effective MPG | 17.7 | 27.1 | **+53%** |
+
+The throughput improvement **scales with congestion**. At high traffic loads, the proposed system delivered **51% more cars** through the same road.
+
+---
+
+## Anticipating Objections
+
+**"What about rush hour when everything slows down?"**
+
+Minimums are enforced via automated cameras when lane density permits free flow. When volume exceeds capacity, physics wins—but so does the current system's failure. The difference: our system delays breakdown longer (34% more throughput) and recovers faster (cars already stratified by speed).
+
+**"Isn't crossing from 65 to 85 mph lanes dangerous?"**
+
+Yes—which is why higher-speed lanes should have limited entry points, like HOV lanes today. You don't merge across three speed differentials. You enter at designated points after matching speed.
+
+**"This is just rich people buying speed."**
+
+No. This is preventing slow, unpredictable behavior from destabilizing shared infrastructure.
+
+Everyone gets: 34% faster commute, 84% fewer accidents, 53% better fuel economy, less stress.
+
+The right lane remains free. What's priced is access to *variance-constrained lanes*, not speed itself. Your 2004 Camry that tops out at 72 stays in the right two lanes—where it was anyway.
+
+The current system is regressive in time, fuel, and risk. This proposal is regressive only in top-end access.
+
+**"This would never pass politically."**
+
+Political feasibility is a separate question from mechanical correctness. Most successful infrastructure reforms were politically impossible until failure made them unavoidable.
+
+**"This sounds authoritarian."**
+
+All traffic systems are coercive. The question isn't whether rules constrain behavior, but whether they do so efficiently and safely.
 
 ---
 
@@ -62,8 +117,7 @@ Why does this work?
 
 They'll get **more**—from the right behavior.
 
-**Un-Speeding Tickets (slow-traffic cameras):**
-- Automated detection of minimum violations
+**Strict Minimum Enforcement (automated cameras):**
 - Estimated: **$660 million/year** (Bay Area)
 - Revenue decreases as compliance improves—that's the goal
 
@@ -74,7 +128,7 @@ They'll get **more**—from the right behavior.
 | Tier 1 | Right lane | $50 | $55M |
 | Tier 2 | Middle lanes | $100 | $275M |
 | Tier 3 | All lanes | $200 | $220M |
-| Tier 4 | Express (95 mph) | $500 | $138M |
+| Tier 4 | Express | $500 | $138M |
 | **Total** | | | **$688M** |
 
 **Vehicle Certification:**
@@ -90,36 +144,9 @@ They'll get **more**—from the right behavior.
 
 Current system: $280 million. That's a **6.5x increase**.
 
----
+**"But the DMV can't handle this!"**
 
-## "But the DMV Can't Handle This!"
-
-They don't have to. Delegate to certified private driving schools—exactly like motorcycle endorsement today:
-- Schools administer tier tests
-- DMV rubber-stamps certificates
-- Schools compete on quality and convenience
-- No additional DMV headcount
-- Creates **$206 million** driving school market
-
----
-
-## The Simulation
-
-I built an agent-based traffic model to test this. Parameters:
-- 3 lanes, 10-mile stretch
-- 2,400 cars/hour entry rate
-- Realistic driver behavior (30% need mid-road exits, 5% imperfect compliance)
-
-**Results:**
-
-| Metric | Current System | Proposed | Change |
-|--------|---------------|----------|--------|
-| Throughput | 1,175 cars/hr | 1,574 cars/hr | **+34%** |
-| Lane changes/car | 7.49 | 0.46 | **-94%** |
-| Accident risk | 9.06/1000 | 1.11/1000 | **-84%** |
-| Effective MPG | 17.7 | 27.1 | **+53%** |
-
-The throughput improvement **scales with congestion**. At high traffic loads, the proposed system delivered **51% more cars** through the same road.
+They don't have to. Delegate to certified private driving schools—exactly like motorcycle endorsement today. Schools administer tier tests, DMV rubber-stamps certificates, schools compete on quality. No additional headcount. Creates **$206 million** driving school market.
 
 ---
 
@@ -142,7 +169,7 @@ The throughput improvement **scales with congestion**. At high traffic loads, th
 - System setup: $10 million
 - **Total: $62 million (one-time)**
 
-**ROI: 54x in year one.**
+**Societal ROI: 54x in year one.**
 
 ---
 
@@ -154,22 +181,6 @@ The throughput improvement **scales with congestion**. At high traffic loads, th
 - Or planting **131 million trees**
 
 The "dangerous" proposal of higher speed limits is actually dramatically better for the environment—because smooth flow beats stop-and-go every time.
-
----
-
-## Who Wins?
-
-| Stakeholder | Benefit |
-|-------------|---------|
-| State/City | $1.5B new annual revenue |
-| Driving schools | $206M new market |
-| Car manufacturers | Certification differentiation |
-| Insurance companies | Better risk stratification |
-| Commuters | 34% faster, less rage |
-| Slow drivers | Protected in right lane |
-| Fast drivers | Legal access to appropriate speeds |
-| Environment | 711,000 cars worth of emissions eliminated |
-| Everyone | 84% fewer accidents |
 
 ---
 
@@ -192,4 +203,4 @@ Wouldn't it be nice if we could just... have this?
 
 *Simulation code and full analysis: [github.com/jmcentire/traffic-simulation](https://github.com/jmcentire/traffic-simulation)*
 
-#transportation #policy #infrastructure #bayarea #california #traffic #sustainability #innovation
+#transportation #policy #infrastructure #bayarea #california #traffic #sustainability #systems
