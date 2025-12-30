@@ -107,6 +107,16 @@ The current system is regressive in time, fuel, and risk. This proposal is regre
 
 Political feasibility is a separate question from mechanical correctness. Most successful infrastructure reforms were politically impossible until failure made them unavoidable.
 
+**"What about elderly or nervous drivers?"**
+
+They're *protected*, not excluded. In the current system, a cautious driver in the fast lane gets tailgated, honked at, and stressed—causing exactly the unpredictable behavior that leads to accidents. In the proposed system, they're in the right lane by design, surrounded by others going similar speeds. No pressure. No conflict. Safer for everyone, including them.
+
+**"This requires perfect enforcement."**
+
+It requires *easier* enforcement. The current system tries to catch speeders—drivers who are actively watching for cameras and cops. They're vigilant. They evade. The proposed system catches slow drivers—often the least attentive people on the road (that's part of why they're dangerous). They're not watching for cameras. They're easier to catch.
+
+And here's a quality-of-life bonus: in the current system, you see a cop and brake reflexively, even if you're legal. In the proposed system, you're in the right lane for your speed by construction. See a cop? No anxiety. Nothing to hide.
+
 **"This sounds authoritarian."**
 
 All traffic systems are coercive. The question isn't whether rules constrain behavior, but whether they do so efficiently and safely.
