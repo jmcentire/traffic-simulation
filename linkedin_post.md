@@ -89,7 +89,9 @@ Minimums are enforced via automated cameras when lane density permits free flow.
 
 **"Isn't crossing from 65 to 85 mph lanes dangerous?"**
 
-Yes—which is why higher-speed lanes should have limited entry points, like HOV lanes today. You don't merge across three speed differentials. You enter at designated points after matching speed.
+You can't. The mechanism prevents it.
+
+To move from the right lane (55-65) to the left lane (75-85), you must step through the middle lane (65-75). Each transition requires matching speed *before* merging—that's what minimum enforcement means. Each merge is only a 10 mph differential, not 30. The structure makes multi-lane jumps impossible without triggering a minimum violation in the intermediate lane.
 
 **"This is just rich people buying speed."**
 
