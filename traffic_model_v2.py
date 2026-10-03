@@ -12,6 +12,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from dataclasses import dataclass, field
 from typing import List, Optional
+import os
 import random
 
 @dataclass
@@ -428,8 +429,13 @@ def plot_results(baseline_sim, proposed_sim):
     ax.grid(True, alpha=0.3, axis='y')
 
     plt.tight_layout()
-    plt.savefig('/Users/jmcentire/Personal/Articles/traffic-simulation/traffic_results.png', dpi=150)
-    print("\nVisualization saved to traffic_results.png")
+    # Default: next to this script. Override with TRAFFIC_SIM_OUTPUT.
+    out_path = os.environ.get(
+        "TRAFFIC_SIM_OUTPUT",
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), "traffic_results.png"),
+    )
+    plt.savefig(out_path, dpi=150)
+    print(f"\nVisualization saved to {out_path}")
 
 
 if __name__ == "__main__":
